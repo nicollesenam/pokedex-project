@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-search (searchChange)="onSearchChange($event)"></app-search>
+<div class="container pokemon-list">
+
+  <div class="row column">
+    <div class="col-md-3 mb-4" *ngFor="let pokemon of pokemons; index as i">
+      <div class="card">
+        <div class="image">
+          <img src="{{ getPokemonImage(i) }}" class="pokemon">
+        </div>
+        <div class="pokemon-number">
+          #{{ number }}
+        </div>
+        <div class="pokemon-name">
+          {{ pokemon.name | titlecase }}
+        </div>
+        <div class="types">
+          <div class="pokemon-type" *ngFor="let types of pokemon.types">
+            <!-- <span>{{ pokemon.types }}</span> -->
+            <img class="icon-type" src="assets/icon-types/Pokemon_Type_Icon_{{ types }}.svg" alt="" srcset="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-load-more></app-load-more>

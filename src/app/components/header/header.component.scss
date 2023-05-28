@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+
+  .pokeball-icon {
+    width: 33px;
+    height: 33px;
+    margin-top: 8px;
+  }
+
+  .title {
+    margin-left: 10px;
+    color: #E1DEF1;
+  }
+
+}

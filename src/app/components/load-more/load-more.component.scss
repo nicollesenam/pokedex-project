@@ -1,0 +1,22 @@
+.container-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  padding-bottom: 29px;
+
+  .load-more {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #603B89;
+    width: 119px;
+    height: 29px;
+
+    .load-more-text {
+      font-size: 13px;
+      color: #E1DEF1;
+      line-height: 15.23px;
+      font-weight: 600;
+    }
+
+  }
+}
