@@ -4,7 +4,7 @@
 
   <div class="row column">
     <div class="col-md-3 mb-4" *ngFor="let pokemon of pokemons; index as i">
-      <div class="card">
+      <div class="card pokemon-detail" (click)="openPopup(pokemon)">
         <div class="image">
           <img src="{{ getPokemonImage(i) }}" class="pokemon">
         </div>
@@ -25,5 +25,6 @@
 
   </div>
 </div>
-
 <app-load-more></app-load-more>
+
+<app-pokemon-detail *ngIf="isPopupOpen" [pokemon]="selectedPokemon" (close)="closePopup()"></app-pokemon-detail>

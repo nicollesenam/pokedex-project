@@ -1,15 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin, map, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, forkJoin, map, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  private api: string ='https://pokeapi.co/api/v2'
+  private api: string ='https://pokeapi.co/api/v2';
+  private pokemonDetails = new BehaviorSubject<any>({});
+  private pokemonId = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) { }
+
+  setPokemonsDetails(pokemon: any) {
+    this.pokemonDetails.next(pokemon);
+    const url = pokemon.url;
+    const splitted = url.split('/');
+    const pokemonId = splitted[splitted.length - 2];
+    this.pokemonId.next(pokemonId);
+  }
+
+  getPokemonsDetails() {
+    return this.pokemonDetails.asObservable();
+  }
+
+  getPokemonsIds() {
+    return this.pokemonId.asObservable();
+  }
 
   getPokemons(): Observable<any> {
     return this.http.get<any>(`${this.api}/pokemon`).pipe(

@@ -1,6 +1,6 @@
-import { map } from 'rxjs';
+import { Pokemon } from 'src/app/interfaces/Pokemon';
 import { PokemonService } from './../../services/pokemon.service';
-import { Component, Input, OnInit, Type } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -11,16 +11,31 @@ export class ListComponent implements OnInit {
   allPokemonsNames: string[] = [];
   pokemonsProperties;
   @Input() number;
-  id: number;
   @Input() types: [] = [];
   pokemons: any;
   pokemonsTypes: any;
   filteredPokemons: any;
+  // @selectedPokemons;
+  // isPopupVisible = false;
+  isPopupOpen = false;
+  selectedPokemon: Pokemon | null = null;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.getPokemons();
+  }
+
+  openPopup(pokemon: Pokemon) {
+    console.log(pokemon)
+    this.pokemonService.setPokemonsDetails(pokemon);
+    this.selectedPokemon = pokemon;
+    this.isPopupOpen = true;
+  }
+
+  closePopup() {
+    this.isPopupOpen = false;
+    this.selectedPokemon = null;
   }
 
   onSearchChange(value: string) {
@@ -40,12 +55,11 @@ export class ListComponent implements OnInit {
 
   getPokemonImage(index) {
     this.number = this.leadingZero(index + 1);
-    return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.number}.png`;
+    const imageUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${this.number}.png`;
+
+    return imageUrl;
   }
 
-  test(index) {
-    console.log(index)
-  }
 
   getPokemonType(index) {
     this.number = index + 1;

@@ -1,0 +1,57 @@
+<div class="pokemon-card-details">
+  <div class="pokemon-card-details-content">
+    <div class="top-card">
+      <h1 class="pokemon-title-card">{{ pokemonName }}</h1>
+      <i class="fa-solid fa-xmark close-icon" (click)="onClose()"></i>
+    </div>
+
+    <div class="pokemon-card-attributes">
+      <div class="pokemon-image">
+        <img src="{{ getPokemonImages() }}">
+      </div>
+      <div class="description">
+        <span class="description-title">Description</span>
+        <div class="description-text">
+          <span class="description-pokemon">A strange seed was planted on its back at birth. The plant sprouts and grows with this pokemon.</span>
+        </div>
+      </div>
+      <div class="description-info">
+        <div class="description-size">
+          <div class="height-card">
+            <div class="height-info">
+              <span>Height</span>
+              <span>0.7m</span>
+            </div>
+          </div>
+
+          <div class="weight-card">
+            <div class="weight-info">
+              <span>Weight</span>
+              <span>6.9kg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="description-properties">
+          <div class="category-card">
+            <div class="category">
+              <span>Category</span>
+              <span>Seed</span>
+            </div>
+          </div>
+
+          <div class="abilities-card">
+            <div class="abilities">
+              <span>Abilities</span>
+              <span>Overgrow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button (click)="onClose()">Close</button>
+    </div>
+  </div>
+
+</div>
